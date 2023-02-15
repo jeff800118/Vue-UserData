@@ -52,4 +52,14 @@ body{
 
 #btn{
     border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+    box-shadow: 0 0 2px 3px orange;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-size:15px;
+    font-weight: bolder;    
+}
+
+#btn:hover{
+    cursor: pointer;
+    width: 40px;
+    height:30px;
 }

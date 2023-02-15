@@ -1,0 +1,94 @@
+*{
+    margin: auto;
+    padding: 0;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+}
+
+#head{
+    display:flex;
+}
+
+#user{
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: end;
+    margin-right: 0px;
+    font-size:25px;
+    font-weight:bold;
+    color:red;
+}
+
+#logout{
+    flex-direction: row;
+    margin-left: 0;
+    cursor: pointer;
+    border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+    box-shadow: 0 0 2px 3px hotpink;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-size:15px;
+    font-weight: bolder;  
+}
+
+#logout:hover{
+    cursor: pointer;
+    width: 50px;
+    height:25px;
+    font-size: 18px;
+}
+
+#admin{
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-weight: bolder;
+    text-align: center;
+    text-decoration: underline;
+}
+
+
+
+
+#check:hover{
+    cursor: pointer;
+    width: 80px;
+    height:35px;
+    font-size: 18px;
+}
+
+
+#check{
+    border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+    box-shadow: 0 0 2px 3px orange;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-size:15px;
+    font-weight: bolder;  
+    display: flex;
+    padding: 0;
+    text-align: center;
+}
+
+.update{
+    border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+    box-shadow: 0 0 2px 3px lawngreen;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-weight: bolder;
+    font-size:15px;
+    cursor: pointer;
+}
+
+.update:hover{
+    cursor: pointer;
+    font-weight:100;
+}
+
+.del{
+    border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+    box-shadow: 0 0 2px 3px red;
+    font-family:Comic Sans MS, Comic Sans, cursive;
+    font-weight: bolder;
+    font-size:15px;
+    cursor: pointer;
+}
+
+.del:hover{
+    cursor: pointer;
+    font-weight:100;
+}

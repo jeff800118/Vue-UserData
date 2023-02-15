@@ -3,7 +3,7 @@
         <h1>用戶修改頁面</h1>
         <!-- 帳號 -->
         
-        帳號 : <input type="text" v-model="ac_name" value="" :placeholder="this.$store.state.ac_name"><br>
+        用戶號碼 : <input type="text" v-model="ac_name" value="" :placeholder="this.$store.state.ac_num" readonly><br>
         <!-- 密碼 -->
         密碼 : <input type="password" v-model="upwd" @blur="$checkupwd"><br>
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkupwd==1">請填入密碼</i>
@@ -124,7 +124,7 @@
             updateUser(){
                 let url = '/update'
                 let params = `account_num=${this.$store.state.ac_num}&user_name=${this.uname}&user_phone=${this.phone}`
-                if(this.unameBool || this.phoneBool){
+                if(this.unameBool && this.phoneBool){
                     this.axios.post(url,params).then((res)=>{
                     // console.log(res)
                         alert('用戶表單註冊成功')

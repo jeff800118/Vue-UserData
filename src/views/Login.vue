@@ -3,7 +3,7 @@
         <div id="loginBase">
         <h1 class="font">用戶登入頁</h1>
         <h6 class="h6">帳號 :  <input type="text" v-model="ac_name" :id="admin | adminFilter(adminP)"></h6>
-        <h6 class="h6">密碼 : <input type="password" v-model="upwd" :id="adminP | adminFilter(adminP)"></h6>
+        <h6 class="h6">密碼 : <input type="password" v-model="upwd" :id="adminP | adminFilter(adminP)"></h6><br>
         <button id="btn" @click="getData">登入</button><br>
     </div>
     </div>

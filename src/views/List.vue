@@ -1,20 +1,20 @@
 <template>
-    <div  align="center">
+    <div id="admin">
         <h1>管理員頁面</h1><br>
-        <div style="display:flex;justify-content: center;">
-            <div id="user" style="padding-right: 20px;">{{ $store.state.ac_name }} 你好</div>
-            <button @click="logout">退出</button>
+        <div id="head">
+            <div id="user" style="padding-right: 20px;">{{ this.$store.state.ac_name  = 'Ac02'? '管理員' : this.$store.state.ac_name}} 你好</div>
+            <button id="logout" @click="logout">退出</button>
         </div><br>
         
-        <table border="1" >
-            <tr>
+        <table border="1" borderColor="purple" borderRadius="50%" id="table">
+            <tr style="background-color:lawngreen">
                 <td>會員編號</td>
                 <td>姓名</td>
                 <td>性別</td>
                 <td>電話</td>
                 <td>用戶地址</td>
                 <td>會員層級名</td>
-                <td colspan="2" v-if="admin">控制中心</td>
+                <td colspan="2">控制中心</td>
             </tr>
             <tr v-for="(item,index) in data" :key="index" >
                 <td v-if="$store.state.ac_name != item.account_name">{{ item.account_num }}</td>
@@ -23,14 +23,15 @@
                 <td v-if="$store.state.ac_name != item.account_name">{{ item.user_phone }}</td>
                 <td v-if="$store.state.ac_name != item.account_name">{{ item.user_address }}</td>
                 <td v-if="$store.state.ac_name != item.account_name">{{ item.permission_name }}</td>
-                <td v-if="$store.state.ac_name != item.account_name"><button @click="goUpdate(item.account_num)">修改</button></td>
-                <td v-if="$store.state.ac_name != item.account_name"><button  @click="delAc(item.account_num)">刪除</button></td>
+                <td v-if="$store.state.ac_name != item.account_name"><button class="update" @click="goUpdate(item.account_num)">修改</button></td>
+                <td v-if="$store.state.ac_name != item.account_name"><button class="del" @click="delAc(item.account_num)">刪除</button></td>
             </tr>
         </table><br>
         <!-- <button @click="goUpdate">測試</button> -->
-        <button @click="getData">查看資料</button><br>
+        <button @click="getData" id="check">查看資料</button><br>
     </div>
 </template>
+<style src="./list.css"></style>
 
 <script>
     export default {
@@ -90,10 +91,6 @@
 // table{
 //     border-collapse:collapse
 // }
-#user{
-    font-size:25px;
-    font-weight:bold;
-    color:red;
-}
+
 
 </style>
