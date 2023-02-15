@@ -1,0 +1,55 @@
+*{
+    padding: 0;
+    margin: 0 auto;
+}
+body{
+    background-image:url(../assets/loginbase1.jpg) ;
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    margin: auto;
+    padding: 0;
+}
+
+#loginBase{
+  border: 6px dashed gray;  
+  width: 400px;
+  height:180px;
+  position: relative;
+  margin: auto;
+  margin-top: 700px;
+  padding: 0;
+  text-align: center;
+  border-radius: 15%;
+  border-width: 2px 3px 6px 4px;
+  border-radius: 80% 6% 94% 5% / 5% 94% 6% 95%;
+  /* transform: rotate(2deg); */
+}
+
+@font-face {
+    font-family: myself;
+    src: url('https://fonts.googleapis.com/earlyaccess/cwtexyen.css');
+}
+
+#loginBase h1{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 48px;
+    color: peachpuff;
+}
+
+#loginBase h6{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 20px;
+    color: hotpink;
+}
+
+#loginBase input{
+    font-family: Comic Sans MS, Comic Sans, cursive;
+    font-size: 20px;
+    color: red;
+}
+
+#btn{
+    border-radius: 90% 6% 85% 9% / 10% 90% 15% 91%;
+}
