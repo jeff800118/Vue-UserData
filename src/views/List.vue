@@ -17,14 +17,14 @@
                 <td colspan="2">控制中心</td>
             </tr>
             <tr v-for="(item,index) in data" :key="index" >
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.account_num }}</td>
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.user_name }}</td>
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.sex_name }}</td>
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.user_phone }}</td>
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.user_address }}</td>
-                <td v-if="$store.state.ac_name != item.account_name">{{ item.permission_name }}</td>
-                <td v-if="$store.state.ac_name != item.account_name"><button class="update" @click="goUpdate(item.account_num)">修改</button></td>
-                <td v-if="$store.state.ac_name != item.account_name"><button class="del" @click="delAc(item.account_num)">刪除</button></td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.account_num }}</td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.user_name }}</td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.sex_name }}</td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.user_phone }}</td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.user_address }}</td>
+                <td v-if=" item.account_name != 'Ac02'">{{ item.permission_name }}</td>
+                <td v-if=" item.account_name != 'Ac02'"><button class="update" @click="goUpdate(item.account_num)">修改</button></td>
+                <td v-if=" item.account_name != 'Ac02'"><button class="del" @click="delAc(item.account_num)">刪除</button></td>
             </tr>
         </table><br>
         <!-- <button @click="goUpdate">測試</button> -->
@@ -44,10 +44,10 @@
             },
         methods:{
             goUpdate(account_num){
-                let urlParams = new URLSearchParams(location.search)
-                let ac_num = urlParams.get('account_num')
+                // let urlParams = new URLSearchParams(location.search)
+                // let $account_num = urlParams.get('account_num')
                 location.href = `/update/${account_num}`
-                console.log(account_num)
+                // console.log(account_num)
                 this.$store.commit('getac_num',account_num)
             },
             delAc(ac_num){
@@ -56,9 +56,10 @@
                     if(status){
                         this.axios.get(url).then((res)=>{
                             console.log(res)
-                            if(res == 1){
+                            if(res.data == 1){
                                 alert('刪除成功',`刪除第${ac_num}筆`)
-                            }else if(res == 0){
+                                location.reload()
+                            }else if(res.data == 0){
                                 alert('刪除失敗')
                             }
                         })

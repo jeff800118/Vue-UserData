@@ -1,32 +1,34 @@
 <template>
     <div>
-        <h1>我是註冊頁</h1>
-        <!-- 帳號 -->
+        <h1>用戶註冊頁</h1>
+        <div id="regBase">
+            <!-- 帳號 -->
         <span style="color:red">【*號為必填項】</span><br>
-        *帳號 : <input type="text" @blur="$checkac_name" v-model="ac_name"><br>
+        *帳號 : <input type="text" @blur="$checkac_name" v-model="ac_name">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkac_name==1">請填入帳號</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkac_name==2" >用戶名已被註冊</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkac_name==3" >√用戶名可註冊</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkac_name==4" >格式不正確</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkac_name==4" >格式不正確</i>
         <!-- 密碼 -->
-        *密碼 : <input type="password" v-model="upwd" @blur="$checkupwd"><br>
+        *密碼 : <input type="password" v-model="upwd" @blur="$checkupwd">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkupwd==1">請填入密碼</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkupwd==2" >格式正確</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==3" >密碼不得為空</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==4" >格式不正確</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==4" >格式不正確</i>
         <!-- 確認密碼 -->
         
-        *確認密碼 :  <input type="password" v-model="reupwd" @blur="$checkreupwd"><br>
+        *確認密碼 :  <input type="password" v-model="reupwd" @blur="$checkreupwd">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkreupwd==1">請填入密碼</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkreupwd==2" >與密碼相符</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkreupwd==3" >與密碼不符</i><br>
-        <button @click="getAccount">送出</button><br><br>
+
+        <button @click="getAccount" class="btn">送出</button>
         <!-- 姓名 -->
-        *姓名 : <input type="text" v-model="uname" @blur="$checkuname"><br>
+        *姓名 : <input type="text" v-model="uname" @blur="$checkuname">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkuname==1">請填入姓名</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==2">姓名不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkuname==3">格式正確</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==4">格式不正確</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==4">格式不正確</i>
         <!-- 性別 -->
         <div>
         *性別 : 
@@ -41,14 +43,16 @@
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkemail==1">請填入信箱</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkemail==2" >信箱不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkemail==3" >格式正確</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkemail==4" >格式不正確</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkemail==4" >格式不正確</i>
         *電話 : <input type="text" v-model="phone" @blur="$checkphone"><br>
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkphone==1">請填入電話</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==2" >電話不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkphone==3" >格式正確</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==4" >格式不正確</i><br>
-        地址 : <input type="text" v-model="address"><br><br>
-        <button @click="getUser">送出</button>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==4" >格式不正確</i>
+        地址 : <input type="text" v-model="address"><br>
+        <button @click="getUser" class="btn">送出</button>
+        </div>
+        
     </div>
 </template>
 

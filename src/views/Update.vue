@@ -1,38 +1,41 @@
 <template>
     <div>
-        <h1>用戶修改頁面</h1>
+        <h1>用戶修改頁面</h1><br>
         <!-- 帳號 -->
-        
+        <div id="updateBase">
         用戶號碼 : <input type="text" v-model="ac_name" value="" :placeholder="this.$store.state.ac_num" readonly><br>
         <!-- 密碼 -->
-        密碼 : <input type="password" v-model="upwd" @blur="$checkupwd"><br>
+        密碼 : <input type="password" v-model="upwd" @blur="$checkupwd">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkupwd==1">請填入密碼</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkupwd==2" >格式正確</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==3" >密碼不得為空</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==4" >格式不正確</i><br>
         <!-- 確認密碼 -->
-        *確認密碼 :  <input type="password" v-model="reupwd" @blur="$checkreupwd"><br>
+        *確認密碼 :  <input type="password" v-model="reupwd" @blur="$checkreupwd">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkreupwd==1">請填入密碼，*為必填</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkreupwd==2" >與密碼相符</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkreupwd==3" >與密碼不符</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkreupwd==3" >與密碼不符</i><br><br>
         
-        <button @click="updateAccount">修改</button><br><br>
+        <button @click="updateAccount" class="update">修改</button><br><br>
         <!-- 姓名 -->
-        姓名 : <input type="text" v-model="uname" @blur="$checkuname"><br>
+        姓名 : <input type="text" v-model="uname" @blur="$checkuname">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkuname==1">請填入姓名</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==2">姓名不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkuname==3">格式正確</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==4">格式不正確</i><br>
        <!-- 電話 -->
-        電話 : <input type="text" v-model="phone" @blur="$checkphone"><br>
+        電話 : <input type="text" v-model="phone" @blur="$checkphone">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkphone==1">請填入電話</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==2" >電話不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkphone==3" >格式正確</i>
-        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==4" >格式不正確</i><br>
+        <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==4" >格式不正確</i><br><br>
 
-        <button @click="updateUser">修改</button>
+        <button @click="updateUser" class="update">修改</button>
+        </div>
+        
     </div>
 </template>
+<style src="./list.css"></style>
 
 <script>
     export default {
@@ -127,11 +130,11 @@
                 if(this.unameBool && this.phoneBool){
                     this.axios.post(url,params).then((res)=>{
                     // console.log(res)
-                        alert('用戶表單註冊成功')
+                        alert('用戶表單修改成功')
                         this.$router.go(-1)
                     })
                 }else{
-                    alert('用戶表單註冊失敗')
+                    alert('用戶表單修改失敗，請確認是否都填入')
                     this.$router.go(-1)
                 }
             }
