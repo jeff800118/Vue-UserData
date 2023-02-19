@@ -1,7 +1,7 @@
 <template>
     <div>
         <h1>用戶註冊頁</h1>
-        <div id="regBase">
+        <div  class="regBase">
             <!-- 帳號 -->
         <span style="color:red">【*號為必填項】</span><br>
         *帳號 : <input type="text" @blur="$checkac_name" v-model="ac_name">
@@ -16,21 +16,23 @@
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==3" >密碼不得為空</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkupwd==4" >格式不正確</i>
         <!-- 確認密碼 -->
-        
         *確認密碼 :  <input type="password" v-model="reupwd" @blur="$checkreupwd">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkreupwd==1">請填入密碼</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkreupwd==2" >與密碼相符</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkreupwd==3" >與密碼不符</i><br>
+        
+        <button @click="next" class="btn" :data-state="state">送出</button>
+        </div>
 
-        <button @click="getAccount" class="btn">送出</button>
-        <!-- 姓名 -->
+        <div v-if="state" class="regBase">
+                    <!-- 姓名 -->
         *姓名 : <input type="text" v-model="uname" @blur="$checkuname">
         <i style="display: inline;color:blue;font-weight: bolder;" v-if="checkuname==1">請填入姓名</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==2">姓名不得為空</i>
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkuname==3">格式正確</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkuname==4">格式不正確</i>
         <!-- 性別 -->
-        <div>
+        <div v-if="ac_nameBool && upwdBool && reupwdBool">
         *性別 : 
         女 <input type="radio"  name="gender" value="0" v-model="gender">
         <!-- <label for="women" name="women"></label> -->
@@ -50,9 +52,8 @@
         <i style="display: inline;color:green;font-weight: bolder;" v-if="checkphone==3" >格式正確</i>
         <i style="display: inline;color:red;font-weight: bolder;" v-if="checkphone==4" >格式不正確</i>
         地址 : <input type="text" v-model="address"><br>
-        <button @click="getUser" class="btn">送出</button>
+        <button @click="getAll" class="btn">送出</button>
         </div>
-        
     </div>
 </template>
 
@@ -82,6 +83,7 @@
                 emailBool:false,
                 checkphone:1,
                 phoneBool:false,
+                state:false
             }
         },
         methods:{
@@ -172,43 +174,51 @@
                     console.log(res)
                 })
             },
-            getAccount(){
-                let url = '/reg'
-                let params = `account_name=${this.ac_name}&account_password=${this.$md5(this.upwd)}&account_permission=1`
+            next(){
+                // let url = '/reg'
+                // let params = `account_name=${this.ac_name}&account_password=${this.$md5(this.upwd)}&account_permission=1`
 
-                if(this.ac_nameBool && this.upwdBool && this.reupwdBool && this.unameBool && this.emailBool && this.phoneBool){
-                    this.axios.post(url,params).then((res)=>{
-                        console.log(res)
-                        alert('帳號表單註冊成功')
-                    })   
+                if(this.ac_nameBool && this.upwdBool && this.reupwdBool){
+                    this.state = true
+                    alert('請繼續填入個人資料')
                 }else{
-                    alert('帳號表單註冊失敗，請確認必填項目')
+                    alert('請確認帳號密碼是否符合要求')
                 }
+
+            },
+            getAll(){
+                this.getAccount();
+                this.getUser();
             },
             getUser(){
                 let url = '/regdetail'
                 let params = `user_name=${this.uname}&user_sex=${this.gender}&user_mail=${this.email}&user_phone=${this.phone}&user_address=${this.address}`
                 if(this.ac_nameBool && this.upwdBool && this.reupwdBool && this.unameBool && this.emailBool && this.phoneBool){
                     this.axios.post(url,params).then((res)=>{
-                    console.log(res)
-                    alert('用戶表單註冊成功')
+                        // console.log(res)
+                        if(res.data == 1){
+                            alert('用戶帳號註冊成功')
+                        }else{
+                            alert('用戶帳號註冊失敗，請確認必填項目或格式是否正確')
+                        }
+                    });
+                };
+            },
+            getAccount(){
+                let url = '/reg'
+                let params = `account_name=${this.ac_name}&account_password=${this.$md5(this.upwd)}&account_permission=1`
+
+                if(this.ac_nameBool && this.upwdBool && this.reupwdBool){
+                    this.axios.post(url,params).then((res)=>{
+                        // console.log(res)
+                        if(res.data == 1){
+                            alert('用戶資料註冊成功')
+                        }else{
+                            alert('用戶資料註冊失敗，請確認必填項目或格式是否正確')
+                        }
                     })
-                }else{
-                    alert('用戶表單註冊失敗，請確認必填項目')
-                    let women = document.getElementById('women')
-                    let man = document.getElementById('men')
-                    if(women.checked){
-                        this.women = 0
-                        console.log(women)
-                    }else if(men.checked){
-                        this.man = 1
-                        console.log(man)
-                    }
                 }
-            }
-        },
-        filters:{
-            
+            },
         }
     }
 </script>

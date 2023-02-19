@@ -184,7 +184,7 @@ input{
 
 /* 註冊頁面 */
 
-#regBase{
+.regBase{
     display: flex;
     flex-direction: column;
     font-size: 20px;
