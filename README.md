@@ -1,20 +1,7 @@
-# vue-practice
+一、利用Vue.cli建置Vue開發環境
 
-## Project setup
-```
-npm install
-```
+二、建立登入、登入後首頁、修改刪除頁面、管理員後臺頁面
 
-### Compiles and hot-reloads for development
-```
-npm run serve
-```
+三、利用View-Router實現SPA技術，完成各分頁的切換
 
-### Compiles and minifies for production
-```
-npm run build
-```
-
-### Customize configuration
-See [Configuration Reference](https://cli.vuejs.org/config/).
-# Vue-UserData
+四、利用CSS美化網頁介面
